@@ -1,0 +1,5 @@
+/**
+ * App Chat
+ */
+'use strict';
+

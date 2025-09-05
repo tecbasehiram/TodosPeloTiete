@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'FontLogo';
+  src: url('../../fonts/gotham-htf-medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#div-carregando-fundo {
+    position: fixed; /* Fixa a div na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+    display: flex; /* Esconde a div por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000; /* Garante que fique acima dos outros elementos */
+}
+
+.custom-confirm-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+}
+.custom-confirm-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 700px;
+    max-height: 1000px;
+    overflow-y: auto;
+}
+#custom-confirm-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+
+.confirm-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.confirm-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.confirm-yes {
+    background-color: #3839ff;
+    color: #fff;
+}
+.confirm-no {
+    background-color: #ccc;
+    color: #333;
+}
+.confirm-btn:hover {
+    opacity: 0.8;
+}
+
+.dropdown-item-foto-perfil:hover {
+  background-color: transparent !important;
+  color: inherit !important;
+  cursor: default;
+}

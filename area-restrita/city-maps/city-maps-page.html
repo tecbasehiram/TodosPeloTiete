@@ -1,0 +1,429 @@
+<!doctype html>
+
+<html
+  lang="en"
+  class="layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-skin="default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template"
+  data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Todos pelo Tietê - Área Restrita</title>
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+      
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../assets/vendor/fonts/iconify-icons.css?v=202509051755" />
+
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css?v=202509051755" />
+
+    <link rel="stylesheet" href="../../assets/vendor/css/core.css?v=202509051755" />
+
+    <link rel="stylesheet" href="../../assets/css/demo.css?v=202509051755" />
+
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css?v=202509051755" />
+
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/page-profile.css?v=202509051755" />
+    
+    <link href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/3/atlas.min.css" rel="stylesheet" />
+
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/3/atlas.min.js"></script>
+
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+
+    <script src="../../assets/vendor/js/helpers.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/js/template-customizer.js?v=202509051755"></script>
+
+    <script src="../../assets/js/config.js?v=202509051755"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <link rel="stylesheet" href="./city-maps-page.css?v=202509051755" /> 
+  </head>
+
+  <body style="font-family: 'FontLogo', 'Arial Narrow', Arial, sans-serif;">
+    
+    <script type="module"> 
+      import { protegerPagina } from '../../modulos/authGatekeeper.js';
+      import { createModals, createDivCarregandoFundo, createDivFundo, createToast } from '../../modulos/prefabs.js';
+
+      try {
+        createModals();
+        createToast();
+        createDivCarregandoFundo();
+        createDivFundo();
+
+        await protegerPagina([
+          'MASTER', 
+          "ADMIN",
+          "MUNACCESS"
+        ], "../.."); 
+      } catch (error) {
+        console.error("Erro durante a inicialização da autenticação:", error);
+      }
+    </script>
+
+    <div class="layout-wrapper layout-content-navbar conteudo-restrito">
+      <div class="layout-container">
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu">
+          <div class="app-brand demo" style="padding-inline: 0 !important; width: 100% !important;">
+            <!-- Brand Logo -->
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="icon-base bx bx-chevron-left"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Sidebar itens -->
+          </ul>
+        </aside>
+        
+        <div class="menu-mobile-toggler d-xl-none rounded-1">
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large text-bg-secondary p-2 rounded-1">
+            <i class="bx bx-menu icon-base"></i>
+            <i class="bx bx-chevron-right icon-base"></i>
+          </a>
+        </div>
+
+        <div class="layout-page">
+
+          <div class="offcanvas" tabindex="-1" id="bottomDrawer" data-bs-backdrop="false" style="background-color: var(--bs-paper-bg) !important;">
+            <div class="d-xl-none" style="width: 100%; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center;" title="Fechar">
+              <div class="drawer-header-line" style="width: 50px; height: 5px; border-radius: 5px; background-color: gray; margin-top: 20px;"></div>
+            </div>
+            <div class="offcanvas-header mt-xl-5" style="margin-left: 10px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 0px !important; padding-top: 0px !important;">
+                <h5 class="offcanvas-title" style="font-size: 16px;">Funções do Mapa</h5>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                  <button 
+                    type="button" 
+                    style="font-size: 12px; color: var(--bs-primary); padding-right: 10px !important;"
+                    class="btn remove-all-layers-btn"
+                    title="Remover todas as camadas"
+                  ><i class="fa-solid fa-eraser icon-sm"></i></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" title="Fechar"></button>
+                </div>                
+            </div>
+            <div class="offcanvas-body funcoes-mapa-offcanvas-body" id="menu-tools-sidebar">
+              
+            </div>
+          </div>
+
+          <nav
+            class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav d-xl-none" style="background-color: var(--bs-paper-bg); width: 40px; border-radius: 5px; display: flex; justify-content: center; align-items: center;">
+              <a class="nav-item nav-link px-0" href="javascript:void(0)">
+                <i class="icon-base bx bx-menu icon-md"></i>
+              </a>
+            </div>
+          </nav>
+        
+          <div id="myMap"></div>  
+
+          <div class="content-wrapper" style="align-items: end; overflow-y: hidden !important; display: flex; justify-content: flex-start;">
+
+            <div 
+              class="dropdown">
+              <button
+                id="btn-estilos-mapa"
+                aria-expanded="false"
+                class="btn labels-dropdown" 
+                data-bs-toggle="dropdown"
+                title="Estilos do Mapa"
+                data-bs-placement="left"
+                style="
+                  padding: 10px; 
+                  border-top-right-radius: 0px; 
+                  font-size: 12px;
+                  border-bottom-right-radius: 0px; 
+                  margin-top: 200px; 
+                  cursor: pointer;
+                  color: inherit;
+                  background-color: var(--bs-paper-bg);"
+              >
+              <i class="fa-solid fa-gear hidden-mobile-icon" style="font-size: 15px; margin-right: 10px;"></i> Estilos do Mapa
+              </button>
+              <ul class="dropdown-menu labels-dropdown" style="color: inherit; background-color: var(--bs-paper-bg); border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; z-index: 1040;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 16px 0 20px;">
+                  <h2 class="labels-dropdown" style="font-size: 13px; margin: 0; color: inherit;">
+                    <i class="fa-solid fa-gear hidden-mobile-icon" style="margin-right: 10px;"></i>
+                    Estilos do Mapa
+                  </h2>
+                  <button class="btn btn-sm" style="padding: 2px 8px;" onclick="document.getElementById('btn-estilos-mapa').click()">
+                    <i class="fa fa-xmark" style="color: inherit;"></i>
+                  </button>
+                </div>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center; margin-top: 0px;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="satellite" 
+                      name="radioEstiloMapa" 
+                      value="satellite" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="satellite" class="diminuir-mobile" style="font-size: 12px;">Satélite</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="satellite-roads" 
+                      name="radioEstiloMapa" 
+                      value="satellite_road_labels" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="satellite-roads" class="diminuir-mobile" style="font-size: 12px;">Satélite com Estradas</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="dark-gray" 
+                      name="radioEstiloMapa" 
+                      value="grayscale_dark" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="dark-gray" class="diminuir-mobile" style="font-size: 12px;">Cinza Escuro</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="light-gray" 
+                      name="radioEstiloMapa" 
+                      value="grayscale_light" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="light-gray" class="diminuir-mobile" style="font-size: 12px;">Cinza Claro</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="high-contrast" 
+                      name="radioEstiloMapa" 
+                      value="high_contrast_dark" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="high-contrast" class="diminuir-mobile" style="font-size: 12px;">Alto Contraste</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="night" 
+                      name="radioEstiloMapa" 
+                      value="night" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="night" class="diminuir-mobile" style="font-size: 12px;">Noite</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="roads" 
+                      name="radioEstiloMapa" 
+                      value="road" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="roads" class="diminuir-mobile" style="font-size: 12px;">Estradas</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex" style="align-items: center;">
+                    <input 
+                      class="form-check-input"
+                      type="checkbox" 
+                      id="shaded-relief-roads" 
+                      name="radioEstiloMapa" 
+                      value="shaded_relief" 
+                      style="cursor: pointer; margin-right: 10px;"
+                    >
+                    <label for="shaded-relief-roads" class="diminuir-mobile" style="font-size: 12px;">Sombreado com Estradas</label>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dropdown">
+              <button 
+                id="btn-municipio-maps"
+                class="btn labels-dropdown municipio-maps-ativador" 
+                style="
+                  padding: 10px;
+                  margin-top: 10px; 
+                  font-size: 12px;
+                  border-top-right-radius: 0px !important; 
+                  border-bottom-right-radius: 0px !important;
+                  background-color: var(--bs-paper-bg);
+                  cursor: pointer;"
+                data-bs-toggle="offcanvas" 
+                data-bs-target="#bottomDrawer"
+                title="Funções do Municipio Maps"
+                data-bs-placement="left"
+              ><i class="fa-solid fa-magnifying-glass-location hidden-mobile-icon" style="font-size: 15px; margin-right: 10px;"></i> Funções Municipio Maps
+              </button>
+            </div>
+
+            <div class="dropdown">
+              <button
+                id="btn-layers-ativas"
+                aria-expanded="false"
+                class="btn labels-dropdown" 
+                data-bs-toggle="dropdown"
+                title="Camadas Ativas"
+                data-bs-placement="left"
+                style="
+                  padding: 10px; 
+                  border-top-right-radius: 0px; 
+                  font-size: 12px;
+                  border-bottom-right-radius: 0px; 
+                  margin-top: 10px; 
+                  cursor: pointer;
+                  z-index: 1037;
+                  background-color: var(--bs-paper-bg);"
+              >
+                <i class="fa-solid fa-layer-group hidden-mobile-icon" style="font-size: 15px; margin-right: 10px;"></i> Camadas Ativas
+              </button>
+              <ul class="dropdown-menu diminuir-width-mobile" style="border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; padding-top: 5px !important; padding-bottom: 5px !important; width: 260px; z-index: 1040;">
+                 <div class="d-flex justify-content-between align-items-center px-3">
+                  <h2 class="layers-header-title diminuir-mobile" style="font-size: 15px; margin: 0; color: inherit;">
+                    <button class="btn btn-sm" onclick="document.getElementById('btn-layers-ativas').click()">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    Camadas Ativas
+                  </h2>
+                  <button 
+                    type="button" 
+                    style="color: var(--bs-primary); padding-right: 10px !important;"
+                    class="btn remove-all-layers-btn"
+                    title="Remover todas as camadas"
+                  ><i class="fa-solid fa-eraser diminuir-mobile"></i></button>
+                </div>
+                <div class="accordion-body accordion-body-layers-ativas diminuir-mobile" style="padding-bottom: 0px !important; padding-inline: 7px !important;">
+                  <p style="margin-top: 10px; margin-bottom: 10px; margin-left: 12px;">Nenhuma camada ativa</p>
+                </div>
+              </ul>
+            </div>
+
+            <div 
+              id="dados-live-tools" 
+              class="dados-live-tools-not-expanded" 
+              title="Descrição"
+              style="
+                margin-top: 10px;
+                font-size: 12px;
+                transition: 0.5s; 
+                background-color: var(--bs-paper-bg);
+                border-top-left-radius: 5px !important; 
+                border-bottom-left-radius: 5px !important;">
+                  <div class="layers-header-title labels-dropdown" style="font-size: 12px; color: inherit; margin: 10px;">
+                    <i class="fa-solid fa-pencil " style="font-size: 15px; margin-right: 5px;"></i>
+                      Descrição
+                  </div>
+                  
+                  <div id="dados-live-infos">
+
+                  </div>
+            </div>
+
+            <div id="dados-basico-municipio"
+              class="dados-basico-municipio-not-expanded" 
+              style="
+                position: relative;
+                left: 0px;
+                display: block;
+                margin-top: 20px;
+                font-size: 12px;
+                background-color: var(--bs-paper-bg);
+                padding: 11px;
+                border-top-left-radius: 5px !important; 
+                border-bottom-left-radius: 5px !important;
+                z-index: 1037;
+                transition: all 0.5s;">
+                <i id="icon-expand-dados-basicos-municipio" class="fa-solid fa-question labels-dropdown" style="font-size: 15px; cursor: pointer;" ></i>
+                <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+                  <h6 id="dados-basico-municipio-title" class="labels-dropdown" style="font-size: 13px; margin-right: 10px;">Dados do Município</h6>
+                  <i id="icon-collapse-dados-basicos-municipio" class="fa-solid fa-xmark" style="margin: 0 0 20px 10px; cursor: pointer"></i>
+                </div>
+                <div id="dados-basico-municipio-content" class="labels-dropdown">
+                  <p>Nenhum município plotado</p>
+                </div>
+            </div>
+
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <div class="drag-target"></div>
+    </div>
+
+    <script src="../../assets/vendor/libs/jquery/jquery.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/libs/popper/popper.js?v=202509051755"></script>
+    <script src="../../assets/vendor/js/bootstrap.js?v=202509051755"></script>
+    <script src="../../assets/vendor/libs/@algolia/autocomplete-js.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/libs/pickr/pickr.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/libs/hammer/hammer.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/libs/i18n/i18n.js?v=202509051755"></script>
+
+    <script src="../../assets/vendor/js/menu.js?v=202509051755"></script>
+
+    <script src="../../assets/js/main.js?v=202509051755"></script>
+    <script src="../../assets/js/app-user-view-account.js?v=202509051755"></script> 
+
+    <script type="module"> 
+      import { createSidebar, createOffCanvas } from '../../modulos/prefabs.js';
+
+      createSidebar("../..", "city-maps");
+      createOffCanvas();
+    </script>
+       
+    <script type="module" src="./city-maps-page.js?v=202509051755"></script>
+  </body>
+</html>

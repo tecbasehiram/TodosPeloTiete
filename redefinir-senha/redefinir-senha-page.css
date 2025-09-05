@@ -1,0 +1,91 @@
+#div-carregando-fundo {
+    position: fixed; /* Fixa a div na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+    display: flex; /* Esconde a div por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000; /* Garante que fique acima dos outros elementos */
+}
+
+#usuario::placeholder {
+    color: #ffffff;
+}
+
+#password::placeholder {
+    color: #ffffff;
+}
+
+#usuario,
+#password {
+  color: #ffffff;
+  caret-color: #ffffff; /* cor do texto digitado */
+}
+
+@font-face {
+  font-family: 'FontLogo';
+  src: url('../fonts/gotham-htf-medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.form-control:focus {
+  border-color: #192933;
+  box-shadow: 0 0.125rem 0.25rem 0 #19293340;
+}
+
+:root {
+  --bs-primary: #192933; 
+  --bs-primary-contrast: #192933; 
+  --bs-primary-rgb: #192933; 
+}
+
+@media (max-width: 991px) {
+  .login-logo-small-device {
+    display: block !important;
+    width: 50%;
+    height: auto;
+  }
+  .login-label {
+    text-align: center !important;
+  }
+  .bemvindo-label {
+    text-align: center !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 398px) {
+  .login-logo-small-device {
+    display: block !important;
+    width: 50%;
+    height: auto;
+  }
+  .login-label {
+    text-align: center !important;
+  }
+  .bemvindo-label {
+    text-align: center !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo-maior-login {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .logo-maior-login {
+    width: 50% !important;
+  }
+}
+
+:root {
+  --bs-form-invalid-color: #ffffff !important;
+  --bs-form-invalid-border-color: #ffffff !important;
+}

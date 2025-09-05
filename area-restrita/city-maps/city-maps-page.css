@@ -1,0 +1,770 @@
+body {
+    font-family: 'Fahkwang', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-main, #div-body {
+    height: 100%;
+}
+
+#div-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border-color: #3c4d61 !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.dropdown-chert {
+    background-color: #3c4d61 !important;
+}
+
+
+#dropdown-filtro {
+    background-color: #ffffff !important;
+}
+
+#aplicar-filtros-visao-item:hover {
+    transform: scale(1) !important;
+    background-color: #ffffff !important;
+}
+
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+#dropdown-menu-filtro-concorrentes::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+#dropdown-menu-filtro-concorrentes::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+#dropdown-chart-filtro-concorrentes::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+#dropdown-chart-filtro-concorrentes::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+#div-carregando-fundo {
+    position: fixed; /* Fixa a div na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+    display: flex; /* Esconde a div por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 1009; /* Garante que fique acima dos outros elementos */
+}
+
+.content {
+    max-width: 1500px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: white; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.sugestoes-container {
+    position: absolute;
+    background-color: white;
+    top: 58px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 9;
+    width: 100%; /* Ajusta para o tamanho do input */
+    max-width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sugestao-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sugestao-item:hover {
+    background-color: #f7f7f7;
+}
+
+#btn-remover-filtro {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #F7A600;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;    
+    box-shadow: 0 0 5px rgba(247, 166, 0, 0.5) !important;
+    z-index: 999999999999;
+    height: 50px;
+    width: 50px;
+}
+
+#btn-remover-filtro:hover {
+    background-color: #d69123 !important;
+}
+
+#myMap {
+    width: 100%;
+    height: calc(var(--vh, 1vh) * 100);
+    background-color: #000;
+}
+
+
+
+.pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: #e90000;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+}
+
+    .pin:after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        margin: 8px 0 0 8px;
+        background: #ffffff;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+.bounce {
+    animation-name: bounce;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+}
+
+.pin-unidade {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: #1be900;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+}
+
+    .pin-unidade:after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        margin: 8px 0 0 8px;
+        background: #ffffff;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+.pin-unidade-cliente {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: #9400e9;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+}
+
+    .pin-unidade-cliente:after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        margin: 8px 0 0 8px;
+        background: #ffffff;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+.pin-unidade-concorrente {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: #e90000;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -20px;
+}
+
+    .pin-unidade-concorrente:after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        margin: 8px 0 0 8px;
+        background: #ffffff;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+.bounce {
+    animation-name: bounce;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px) rotate(-45deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px) rotate(-45deg);
+    }
+
+    80% {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+}
+
+.dados-live-tools-not-expanded {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    z-index: 8;
+}
+
+.remove-filters {
+    width: auto;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    z-index: 8;
+}
+
+.dados-live-tools-expanded {
+    width: 400px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    z-index: 8;
+}
+
+.menu-not-expanded {
+    width: 70px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.menu-expanded {
+    width: 400px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.menu-expanded::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+.menu-expanded::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+.chart-not-expanded {
+    width: 70px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.chart-expanded {
+    width: 600px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.chart-expanded::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+.chart-expanded::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+.configs-not-expanded {
+    width: 70px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.configs-expanded {
+    width: 350px;
+    max-width: 100%;
+    margin: 10px;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: #3c4d61;
+    cursor: pointer;
+    z-index: 9;
+}
+
+.configs-expanded::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+.configs-expanded::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+.select-concorrentes-box {
+    height: 300px;
+    max-height: 300px;
+    width: 100%;
+    background-color: #4c5055;
+    display: none;
+    flex-direction: column;
+}
+
+#select-concorrentes-box-scroll-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.select-terrenos-oportunidades-box {
+    height: 300px;
+    max-height: 300px;
+    width: 100%;
+    background-color: #4c5055;
+    display: none;
+    flex-direction: column;
+}
+
+#select-terrenos-oportunidades-box-scroll-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar-collapse .nav-sidebar > .nav-item.menu-open:hover > .nav-treeview {
+    display: flex !important; 
+}
+
+@font-face {
+    font-family: 'FontLogo';
+    src: url('../../fonts/gotham-htf-medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  #div-carregando-fundo {
+      position: fixed; /* Fixa a div na tela inteira */
+      top: 0;
+      left: 0;
+      width: 100vw; /* Ocupa toda a largura da tela */
+      height: 100vh; /* Ocupa toda a altura da tela */
+      background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+      display: flex; /* Esconde a div por padrão */
+      align-items: center;
+      justify-content: center;
+      z-index: 1000000; /* Garante que fique acima dos outros elementos */
+  }
+  
+  .custom-confirm-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); 
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+  }
+  .custom-confirm-box {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 700px;
+      max-height: 1000px;
+      overflow-y: auto;
+  }
+  #custom-confirm-message {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #333;
+  }
+  
+  
+  .confirm-buttons {
+      display: flex;
+      justify-content: space-around;
+  }
+  .confirm-btn {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+  }
+  .confirm-yes {
+      background-color: #3839ff;
+      color: #fff;
+  }
+  .confirm-no {
+      background-color: #ccc;
+      color: #333;
+  }
+  .confirm-btn:hover {
+      opacity: 0.8;
+  }
+  
+  .dropdown-item-foto-perfil:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+    cursor: default;
+  }
+  
+  /* Navbar fixa no topo */
+  @media (min-width: 1200px) {
+    /* Quando o menu NÃO está colapsado */
+    .layout-navbar-fixed:not(.layout-menu-collapsed) #layout-navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      inset-inline-start: var(--bs-menu-width);
+    }
+  
+    /* Quando o menu ESTÁ colapsado */
+    .layout-navbar-fixed.layout-menu-collapsed #layout-navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      inset-inline-start: var(--bs-menu-collapsed-width);
+    }
+  
+    .alvo {
+      width: 100% !important;
+    }
+    
+    #dados-basico-municipio {
+      left: 100px;
+      bottom: 10px;
+    }
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  
+  /* O mapa ocupa toda área entre navbar e footer */
+  #myMap {
+    position: absolute;
+    top: 0; /* altura da navbar */
+    bottom: 0; /* altura do footer */
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
+  
+  /* Zerar paddings e margins pra evitar conflitos */
+  .content-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+  }
+  
+  .offcanvas.offcanvas-bottom {
+    height: 40vh;
+  }
+  
+  @media (max-width: 1200px) {
+    .diminuir-mobile {
+      font-size: 12px !important;
+    }
+    #dados-basico-municipio {
+      left: 10px;
+      bottom: 10px;
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 520px) {
+    #pesquisa-mapa-input {
+      width: 100% !important;
+    }
+    .hidde-on-mobile {
+      display: none;
+    }
+    .show-on-mobile {
+      display: flex !important;
+    }
+    .layout-navbar {
+      height: 58px !important;
+    }
+    .buscar-local-mobile, .calcular-rota-mobile {
+      display: flex !important;
+    }
+    .dados-live-infos {
+      font-size: 10px !important;
+    }
+    #dados-basico-municipio {
+      left: 10px;
+      bottom: 10px;
+      font-size: 10px;
+    }
+    .diminuir-mobile {
+      font-size: 10px !important;
+    }
+    .diminuir-width-mobile {
+      width: 200px !important;
+    }
+  }
+  
+  @media (max-width: 470px) {
+    .offcanvas {
+      font-size: 12px !important;
+    }
+    .form-check-label {
+      font-size: 12px !important;
+    }
+    .labels-dropdown {
+      font-size: 10px !important;
+    }
+    .hidden-mobile-label {
+      display: none;
+    }
+    .diminuir-mobile {
+      font-size: 10px !important;
+    }
+    #dados-basico-municipio {
+      left: 10px;
+      bottom: 10px;
+      font-size: 10px;
+    }
+  }
+  
+  .offcanvas-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .offcanvas-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .offcanvas-body::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 3px;
+  }
+  
+  /* Firefox */
+  .offcanvas-body {
+    scrollbar-width: thin;
+    scrollbar-color: gray transparent;
+  }
+  
+  .nav-treeview {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+  }
+  
+  .nav-treeview:not(.collapsed) {
+    max-height: 5000px; /* ajuste conforme necessário */
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-item .main-text {
+    cursor: pointer;  
+  }
+  
+  .nav-item.menu-open > .nav-link > .main-text {
+    color: #F7A600 !important;
+  }
+  
+  .tooltiptext {
+    display: none !important;
+  }
+  
+  .tipo-transporte-selecionado {
+    background-color: #cecece50 !important;
+  }
+  
+  #rotas-container {
+    width: 100%;
+  }
+  
+  .dados-live-tools-not-expanded {
+    background-color: var(--bs-paper-bg);
+    z-index: 8;
+  }
+  
+  .dados-live-tools-expanded {
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    max-height: 87.5vh;
+    overflow-y: auto;
+    box-shadow: 0px 24px 74px 0px rgba(0, 0, 0, .32);
+    background-color: var(--bs-paper-bg);
+    z-index: 8;
+  }
+  
+  #dados-basico-municipio.dados-basico-municipio-not-expanded #dados-basico-municipio-title,
+  #dados-basico-municipio.dados-basico-municipio-not-expanded #icon-collapse-dados-basicos-municipio,
+  #dados-basico-municipio.dados-basico-municipio-not-expanded #dados-basico-municipio-content {
+      display: none;
+  }
+  
+  #dados-basico-municipio.dados-basico-municipio-not-expanded #icon-expand-dados-basicos-municipio {
+      display: flex;
+  }
+  
+  #dados-basico-municipio.preenchido {
+      display: block;
+  }
+  #dados-basico-municipio {
+      display: none;
+  }
+  
+  #dados-basico-municipio.dados-basico-municipio-expanded #icon-expand-dados-basicos-municipio {
+      display: none;
+  }
+  
+  .navbar-detached {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding-left: 0px !important;
+  }
+  
+  .layout-page::before {
+    height: 0px !important;
+  } 
+   
+  .subcontrol-container {
+    display: none !important;
+  }
+  
+  @keyframes bounceRightExitHint {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(20%); }
+    40%  { transform: translateX(0); }
+    60%  { transform: translateX(20%); }
+    80%  { transform: translateX(0); }
+    100% { transform: translateX(0); }
+  }
+  
+  .animate-bounce-right {
+    animation: bounceRightExitHint 0.9s ease-in-out;
+  }

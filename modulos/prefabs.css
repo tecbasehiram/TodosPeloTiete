@@ -1,0 +1,422 @@
+/* Estilos da janela de confirmação */
+.custom-confirm-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+}
+.custom-confirm-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 700px;
+    max-height: 1000px;
+    overflow-y: auto;
+}
+#custom-confirm-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+#custom-info-message {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-group button:hover {
+    background-color: #ffc145 !important;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.confirm-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.confirm-yes {
+    background-color: #F7A600;
+    color: #fff;
+}
+.confirm-no {
+    background-color: #ccc;
+    color: #333;
+}
+.confirm-btn:hover {
+    opacity: 0.8;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap; 
+    column-gap: 50px; 
+    row-gap:30px;
+    margin-bottom: 20px;
+}
+
+.form-field {
+    flex: 0; 
+}
+
+.form-field label {
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Inclui padding no tamanho total */
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #F7A600;
+    outline: none;
+}
+
+/*HEADER*/
+
+/* .header {
+    background-color: #3c4d61;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+#header-btn:hover {
+    background-color: #28313b !important;
+}
+
+#header-dropdown-menu {
+    background-color: #3c4d61 !important;
+}
+
+#header-dropdown-menu li a:hover {
+    background-color: #28313b !important;
+} 
+*/
+
+.header {
+    background-color: #F7A600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+#header-btn:hover {
+    background-color: #b37519 !important;
+}
+
+#header-dropdown-menu {
+    background-color: #F7A600 !important;
+}
+
+#header-dropdown-menu li a:hover {
+    background-color: #b37519 !important;
+} 
+
+
+/* Cabeçalho */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Container da logo e título */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.logo {
+    height: 70px;
+}
+
+.portal-title {
+    color: white;
+    font-size: 35px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Menu */
+.menu {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-item {
+    margin-inline: 0px !important;
+}
+
+/* Submenu */
+.submenu {
+    top: 40px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #F7A600;
+    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+/* Exibir submenu ao passar o mouse */
+.submenu:hover {
+    display: flex;
+}
+
+
+
+.menu-item {
+    padding: 10px;  
+    border-radius: 5px;  
+    text-decoration: none;
+    color: white;
+}
+
+.menu-item:hover {
+    background-color: #b37519;
+}
+
+/*HEADER*/
+
+#modal-alert .modal-footer {
+    border-top-width: 0;
+}
+
+#modal-confirm .modal-footer {
+    border-top-width: 0;
+}
+
+#modal-info .modal-footer {
+    border-top-width: 0;
+}
+
+.form-floating {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+}
+.form-floating .form-control:focus {
+    border: 1px solid #F7A600; 
+    box-shadow: 0 0 5px #f7a50083; 
+}
+
+.form-control:hover {
+    border: 1px solid #F7A600; 
+    box-shadow: 0 0 5px #f7a50083; 
+}
+.form-control {
+    width: 100% !important; 
+    max-width: 100%; 
+}
+
+.form-check-input:focus-within {
+    border-color: #F7A600 !important;
+}
+.form-check-input:checked {
+    background-color: #F7A600 !important;
+    border-color: #F7A600 !important;
+}
+.form-check-input:hover {
+    border: 1px solid #F7A600 !important; 
+    box-shadow: 0 0 5px rgba(247, 166, 0, 0.5) !important;
+}
+.form-check-input:focus {
+    border: 1px solid #F7A600 !important; 
+    box-shadow: 0 0 5px rgba(247, 166, 0, 0.5) !important;
+}
+
+.form-select:focus {
+    border: 1px solid #F7A600 !important; 
+    box-shadow: 0 0 5px rgba(247, 166, 0, 0.5) !important;
+}
+.form-select:hover {
+    border: 1px solid #F7A600 !important; 
+    box-shadow: 0 0 5px rgba(247, 166, 0, 0.5) !important;
+}
+
+#div-carregando-fundo {
+    position: fixed; /* Fixa a div na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+    display: flex; /* Esconde a div por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000; /* Garante que fique acima dos outros elementos */
+}
+
+#div-fundo {
+    position: fixed; /* Fixa a div na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background: rgba(0, 0, 0, 0.800); /* Fundo escuro com transparência */
+    display: flex; /* Esconde a div por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000; /* Garante que fique acima dos outros elementos */
+}
+
+#div-carregando {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    height: auto;
+    width: 600px;
+    text-align: center;
+}
+
+#btn-logout:hover {
+    cursor: pointer;
+}
+
+.sidebar-wrapper .sidebar-menu > .nav-item > .nav-link.active:not(:hover) {
+    background-color: transparent !important;
+}
+
+.bg-body-secondary {
+    background-color: #3c4d61 !important;
+}
+
+.dropdown-menu.mensagem {
+    background-color: white !important;
+}
+
+#btn-confirm-nao:hover {
+    background-color: red !important;
+}
+
+#usuario-nome {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 150px;
+    opacity: 1;
+    transition: max-width 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Quando o sidebar estiver colapsado, esconda suavemente o nome */
+  body.sidebar-collapse #usuario-nome {
+    max-width: 0;
+    opacity: 0;
+    margin-right: 0px !important;
+  }
+
+#sidebar::-webkit-scrollbar {
+    background-color: #52585f !important; 
+    width: 5px; 
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #ffffff !important; 
+    border-radius: 5px;
+}
+
+.nav-item.menu-open > .nav-link > .main-text {
+    color: #F7A600 !important;
+}
+
+.nav-item.disabled .nav-link {
+  /* Fades out the link to give a disabled appearance */
+  opacity: 0.5; 
+  
+  /* Prevents any mouse events (like clicks or hovers) on the link */
+  pointer-events: none; 
+  
+  /* Changes the cursor to indicate that the item is not clickable */
+  cursor: default; 
+}
+
+.nav-item.disabled > .nav-link .nav-arrow {
+    display: none !important;
+}
+
+#floating-remove-btn {
+    position: absolute; 
+    display: none; 
+    width: 25px;
+    height: 25px;
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2000; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#floating-remove-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+}
+
+#sidebar {
+    position: relative !important;
+}
