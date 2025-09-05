@@ -1,0 +1,21 @@
+name: Deploy para HostGator
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Upload para FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.hiramnegocios.com.br # Coloque o FTP do HostGator
+          username: bernardo@todospelotiete.com.br
+          password: ${{ secrets.FTP_PASSWORD }}  # Crie um Secret no GitHub com a senha
+          server-dir: / # Ajuste conforme sua estrutura
